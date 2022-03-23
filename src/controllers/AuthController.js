@@ -59,6 +59,7 @@ class AuthController {
           message: "User logged in successfully",
         });
     } catch (err) {
+      console.log(err.message);
       return next(err);
     }
   }

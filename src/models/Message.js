@@ -6,9 +6,9 @@ const messageSchema = new Schema(
   {
     userId: {
       type: ObjectId,
-      ref: "User",
       required: true,
     },
+    conversationId: ObjectId,
     content: {
       type: String,
       required: true,
@@ -29,6 +29,48 @@ const messageSchema = new Schema(
     timestamps: true,
   }
 );
+
+messageSchema.statics.getById = async function (id) {
+  const lastMessage = await this.aggregate([
+    {
+      $match: {
+        _id: ObjectId(id),
+      },
+    },
+    {
+      $lookup: {
+        from: "members",
+        localField: "userId",
+        foreignField: "userId",
+        as: "member",
+      },
+    },
+  ]);
+};
+
+messageSchema.statics.getMessageByConversationId = async function (
+  conversationId
+) {
+  const messages = await this.aggregate([
+    {
+      $match: {
+        conversationId: ObjectId(conversationId),
+      },
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "userId",
+        foreignField: "_id",
+        as: "user",
+      },
+    },
+    {
+      $unwind: "$user",
+    },
+  ]);
+  return messages;
+};
 
 const Message = mongoose.model("Message", messageSchema);
 module.exports = Message;

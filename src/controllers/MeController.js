@@ -45,6 +45,14 @@ class MeController {
       // console.log(updatedUser);
       res.json({
         success: true,
+        user: {
+          id: updatedUser._id,
+          userName: updatedUser.userName,
+          email: updatedUser.email,
+          dateOfBirth: updatedUser.dateOfBirth,
+          avatar: updatedUser.avatar,
+          gender: updatedUser.gender,
+        },
       });
     } catch (err) {
       return next(createError(500, err.message));
