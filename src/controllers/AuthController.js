@@ -46,13 +46,13 @@ class AuthController {
           httpOnly: true,
           maxAge: 1000 * 60 * 60,
           // secure: true,
-          sameSite: "strict",
+          // sameSite: "strict",
         })
         .cookie("refreshToken", refreshToken, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24 * 7,
           // secure: true,
-          sameSite: "strict",
+          // sameSite: "strict",
           path: "auth/refresh-token",
         })
         .json({
@@ -106,7 +106,7 @@ class AuthController {
             httpOnly: true,
             maxAge: 0,
             // secure: true,
-            sameSite: "strict",
+            // sameSite: "strict",
           });
         return next(createError(403, "Unauthorized"));
       }
@@ -118,7 +118,7 @@ class AuthController {
           httpOnly: true,
           maxAge: 1000 * 60 * 60,
           // secure: true,
-          sameSite: "strict",
+          // sameSite: "strict",
         })
         .json({
           message: "Token refreshed successfully",
@@ -129,14 +129,14 @@ class AuthController {
           httpOnly: true,
           maxAge: 0,
           // secure: true,
-          sameSite: "strict",
+          // sameSite: "strict",
           path: "auth/refresh-token",
         })
         .cookie("accessToken", "", {
           httpOnly: true,
           maxAge: 0,
-          secure: true,
-          sameSite: "strict",
+          // secure: true,
+          // sameSite: "strict",
         });
       return next(err);
     }
@@ -158,14 +158,14 @@ class AuthController {
             httpOnly: true,
             maxAge: 0,
             // secure: true,
-            sameSite: "strict",
+            // sameSite: "strict",
             path: "auth/refresh-token",
           })
           .cookie("accessToken", "", {
             httpOnly: true,
             maxAge: 0,
             // secure: true,
-            sameSite: "strict",
+            // sameSite: "strict",
           })
           .json({
             message: "User logged out successfully",
