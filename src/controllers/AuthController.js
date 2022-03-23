@@ -92,6 +92,7 @@ class AuthController {
   async refreshToken(req, res, next) {
     try {
       const token = req.headers.cookie;
+      console.log("token: ", token);
       const refreshToken = parseCookies(token).refreshToken;
       if (!refreshToken) {
         res
