@@ -45,13 +45,13 @@ class AuthController {
         .cookie("accessToken", accessToken, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60,
-          secure: true,
+          // secure: true,
           sameSite: "strict",
         })
         .cookie("refreshToken", refreshToken, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60 * 24 * 7,
-          secure: true,
+          // secure: true,
           sameSite: "strict",
           path: "auth/refresh-token",
         })
@@ -98,14 +98,14 @@ class AuthController {
           .cookie("refreshToken", "", {
             httpOnly: true,
             maxAge: 0,
-            secure: true,
+            // secure: true,
             sameSite: "strict",
             path: "auth/refresh-token",
           })
           .cookie("accessToken", "", {
             httpOnly: true,
             maxAge: 0,
-            secure: true,
+            // secure: true,
             sameSite: "strict",
           });
         return next(createError(403, "Unauthorized"));
@@ -117,7 +117,7 @@ class AuthController {
         .cookie("accessToken", accessToken, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60,
-          secure: true,
+          // secure: true,
           sameSite: "strict",
         })
         .json({
@@ -128,7 +128,7 @@ class AuthController {
         .cookie("refreshToken", "", {
           httpOnly: true,
           maxAge: 0,
-          secure: true,
+          // secure: true,
           sameSite: "strict",
           path: "auth/refresh-token",
         })
@@ -157,14 +157,14 @@ class AuthController {
           .cookie("refreshToken", "", {
             httpOnly: true,
             maxAge: 0,
-            secure: true,
+            // secure: true,
             sameSite: "strict",
             path: "auth/refresh-token",
           })
           .cookie("accessToken", "", {
             httpOnly: true,
             maxAge: 0,
-            secure: true,
+            // secure: true,
             sameSite: "strict",
           })
           .json({
