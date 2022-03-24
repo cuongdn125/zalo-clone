@@ -25,7 +25,7 @@ class MessageController {
         type,
         userId
       );
-      console.log("message", message);
+      // console.log("message", message);
       const receiver_id = await Conversation.aggregate([
         {
           $match: {

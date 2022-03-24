@@ -125,7 +125,7 @@ class ConversationController {
           userId,
           receiveId
         );
-      console.log("conversation", conversation, type);
+      // console.log("conversation", conversation, type);
       if (!type) {
         const socketId = await redis.get(`${receiveId}online`);
         await this.io
@@ -153,7 +153,7 @@ class ConversationController {
       // console.log("members", members);
 
       for (const member of members) {
-        console.log("member", member);
+        // console.log("member", member);
         const socketId = await redis.get(`${member.userId}online`);
         // console.log("socketId", socketId);
         await this.io

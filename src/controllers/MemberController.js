@@ -16,7 +16,7 @@ class MemberController {
       member.lastView = new Date();
       member.isRead = true;
       await member.save();
-      console.log("object");
+      // console.log("object");
       res.json({
         status: "success",
         data: member,

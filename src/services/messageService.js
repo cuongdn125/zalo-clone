@@ -38,7 +38,7 @@ class MessageService {
         },
       ]);
       result[0].time = dateUtils.toTime(result[0].createdAt);
-      console.log("result", result[0]);
+      // console.log("result", result[0]);
       return result[0];
     }
     if (type === "image") {
